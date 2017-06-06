@@ -1,0 +1,674 @@
+/*
+	Gifty CSS
+
+	For example, you might change some of the default colors:
+
+	$light:                           #fff !default;
+	$stable:                          #f8f8f8 !default;
+	$positive:                        #387ef5 !default;
+	$calm:                            #11c1f3 !default;
+	$balanced:                        #33cd5f !default;
+	$energized:                       #ffc900 !default;
+	$assertive:                       #ef473a !default;
+	$royal:                           #886aea !default;
+	$dark:                            #444 !default;
+	$red: 							  #FF6F68;
+*/
+
+/* 	==========================================================================================
+	========================================================================================== */
+
+
+/* 	=============================================
+	 VARIABLES
+	============================================= */
+
+/* 	-----------------------------------------
+     Standard Colours
+    ----------------------------------------- */
+/* 	--- Colours ------------------------- */
+
+$c-standard-warning: #F96B5D; /* Salmon */
+$c-grey: #333;
+$c-coral: #EC6D73;
+$c-sms-green: #63C147;
+$c-warm-green: #5BB67B;
+
+/* 	-----------------------------------------
+     Colour Sets
+    ----------------------------------------- */
+
+/*  /////////////////////////////////////////
+     MODERN WHITE + RED
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+$c-set-bg-0: $c-grey; 				/* BG --red-- grey */
+$c-set-bg-1: #FFFFFF; 				/* BG white */
+
+$c-set-text-0: #FEFEFF; 			/* Grey (on red) */
+$c-set-text-1: #333; /*#2A2A2A;*/	/* Grey (on white) */
+$c-set-text-2: #37474F; /*#445963;*//* Blue (on red/white) */
+$c-set-text-3: #828F9B; 			/* Light Blue (sub Blue) */
+
+$c-set-border-0: #D3DBE2; /*#FFFFFF;*/
+$c-set-border-1: $c-set-text-2; /*#A9A9A9; 	/* Blue (on white) */
+$c-set-border-2: $c-set-text-2; 	/* Blue (on red/white) */
+
+$c-set-highlight-0: $c-coral; /*$c-warm-green; /*$c-sms-green; /*#EB5155; /* #EA5256 */
+$c-set-highlight-1: $c-coral; /*$c-warm-green; /*$c-sms-green;*/
+
+
+
+/*  /////////////////////////////////////////
+     STYLES
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+/* 	--- Standard ------------------------ */
+
+$c-theme-identity: $c-set-highlight-0;
+$c-theme-transparent: transparent;
+
+
+/*  --- Header -------------------------- */
+
+/*$c-header-bg: $c-set-bg-3;*/
+
+
+/* 	-----------------------------------------
+     Layout
+    ----------------------------------------- */
+
+/* 	--- Compose ------------------------- */
+/*$l-compose-input-text-size: 22;*/
+
+
+/* 	=============================================
+	 @ MIXINS
+	============================================= */
+
+/* - Font Family ------------------------ */
+@mixin font-family {
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+@mixin proxima-nova {
+  font-family: "proxima-nova", sans-serif!important;
+}
+
+/* Rounded Corners ---------------------- */
+@mixin rounded-corners ($radius: 3) {
+  border-radius: $radius;
+}
+
+/* Complex Corners ----------------------- */
+@mixin complex-corners ($tl: 3, $tr: 3, $br: 3, $bl: 3) {
+  border-radius: $tl $tr $br $bl;
+}
+
+/* --- Overflow: hidden ----------------- */
+@mixin overflow {
+  overflow: hidden;
+}
+
+
+
+/* 	=============================================
+	 BODY
+	============================================= */
+
+/* 	-----------------------------------------
+     MODIFICATIONS
+    ----------------------------------------- */
+
+/* 	--- Body ---------------------------- */
+body {
+  @include proxima-nova;
+  /*background-color: $c-set-bg-1;*/
+  color: $c-set-text-2;
+}
+
+section {
+  /* Animate on type face load */
+  opacity: 1;
+  transform: translateY(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+  -webkit-transition: -webkit-transform .4s ease-in-out, opacity .4s ease-in-out;
+  padding: 30px 0;
+}
+
+
+
+section#banner {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: $c-set-bg-0;
+  color: $c-set-text-0;
+
+  .header a {
+    text-decoration: none;
+    border: none !important;
+    color: #fff !important;
+  }
+}
+
+@media screen and (orientation: portrait) {
+
+  section#banner {
+    position: relative;
+  }
+
+}
+
+section#wrapper {
+  .inner {
+    align-self: center;
+    /*text-align: center;*/
+  }
+}
+
+section#wrapper.hide_banner {
+  width: 100%!important;
+}
+
+/* -- Wrapper ---------------------------- */
+.wf-loading section {
+  opacity: 0;
+  transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+}
+
+/* 	--- Nav ----------------------------- */
+section > .header {
+  top: 0;
+  margin: 25px 30px;
+
+  font-weight: 400;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+section#banner > .header {
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+}
+
+section#wrapper > .header {
+  position: fixed;
+  right: 0;
+}
+
+
+/*  --- Signup --------------------------- */
+.signup_container {
+  position: relative;
+  background-color: #fafafa;
+}
+
+ul.bubbles {
+  position: absolute!important;
+  top: 0;
+
+  background-color: #fafafa;
+  padding-top: 5px!important;
+
+  /* Bubble */
+  li.bubble_container {
+    display: flex!important;
+    flex: 1;
+    justify-content: flex-end;
+
+    margin: 5px -20px 5px 40px;
+
+    opacity: 1!important;
+    white-space: pre-wrap;
+    position: relative!important;
+  }
+  li.is_bot_bubble_container {
+    justify-content: flex-start;
+    margin-right: 40px;
+    margin-left: -20px;
+  }
+
+  .bubble {
+    background-color: #63C146;
+    @include rounded-corners(4px);
+    padding: 10 10 0 10;
+  }
+
+  .message {
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 980px) {
+
+  }
+
+  @media screen and (max-width: 736px) {
+    .message {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 736px) and (orientation: portrait) {
+    .message {
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+
+    li.bubble_container {
+      margin: 5px -30px 5px 40px;
+    }
+
+    li.is_bot_bubble_container {
+      margin-left: -30px;
+      margin-right: 20px!important;
+    }
+  }
+
+  @media screen and (orientation: portrait) {
+    .message {
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+
+    li.bubble_container {
+      margin: 5px -30px 5px 40px;
+    }
+
+    li.is_bot_bubble_container {
+      margin-left: -30px;
+    }
+  }
+
+  .is_bot_message {
+    color: #000;
+  }
+
+  .is_bot_bubble {
+    background-color: #E5E5EA;
+    @include rounded-corners(4px);
+
+    padding: 10 10 0 10;
+  }
+
+
+  /*li.bubble {
+      position: relative!important;
+      display: inline-block!important;
+
+
+      @include rounded-corners(4px);
+      background-color: #E5E5EA;
+      color: #000;
+      padding: 8px 10px!important;
+      opacity: 1!important;
+
+      margin-left: -30px;
+      left: 0;
+
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 18px;
+
+      max-width: 190px;
+      overflow: hidden;
+      white-space: pre-wrap;
+  }
+
+      li.bubble.own {
+          background-color: #63C146!important;
+          color: #fff!important;
+          margin-left: 0!important;
+          margin-right: -30px!important;
+          left: auto!important;
+          right: 0!important;
+      }*/
+}
+
+ul.signup {
+
+}
+
+
+/* 	-----------------------------------------
+     SUPPLEMENTAL
+    ----------------------------------------- */
+
+/* 	--- List ---------------------------- */
+ul.blank {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    /*border-left: 1px solid;*/
+    /*padding-left: 5px;*/
+    margin-left: 10px;
+  }
+
+  li, li a, li a:hover {
+    text-decoration: none!important;
+    color: inherit!important;
+    border: none;
+  }
+}
+
+/* 	--- Text ---------------------------- */
+h2 {
+  color: $c-set-text-1;
+  font-size: 1.25em;
+
+  b {
+    color: $c-set-highlight-0;
+  }
+}
+
+h2.inline {
+  display: inline-block;
+}
+
+b {
+  color: #333;
+}
+
+/* 	--- Buttons ------------------------- */
+input.button.special, input.button.special:hover, a.button.special, a.button.special:hover {
+  background-color: $c-set-highlight-1!important;
+  border: 1px solid $c-set-highlight-1!important;
+  color: $c-set-text-0!important;
+}
+
+input.button.special.sub, input.button.special.sub:hover, a.button.special.sub, a.button.special.sub:hover {
+  background-color: transparent!important;
+  color: $c-set-highlight-1!important;
+}
+
+.button {
+  &.red {
+    font-weight: 500;
+    color: #fff;
+    background-color: #d53931;
+    border: none !important;
+    box-shadow: none !important;
+    &:hover {
+      background-color: #de625b;
+    }
+  }
+  text-transform: uppercase;
+  font: inherit;
+  font-weight: 400;
+  font-size: 14;
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  padding: 10px 20px;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+
+footer ul li a:hover {
+  color: $c-set-highlight-1!important;
+}
+
+
+
+/*  --- Inputs --------------------------- */
+label {
+  margin: 0!important;
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #31373d;
+}
+
+input, textarea, select, input[type="checkbox"] + label:before, input[type="radio"] + label:before {
+  border: 1px solid $c-set-border-0!important;
+
+  @include proxima-nova;
+  font-size: 1rem!important;
+  font-weight: 400;
+  /*letter-spacing: 1px;*/
+
+  /*padding: 5px 10px;
+  border: 1px solid #d3dbe2;
+  border-radius: 3px;
+  font-size: 1.14286rem;
+  line-height: 1.71429rem;*/
+}
+
+input[type="email"], input[type="tel"], input[type="text"], select, input[type="checkbox"] + label:before, input[type="radio"] + label:before {
+  height: 2.3em!important;
+}
+
+.select-wrapper::before {
+  content: '';
+}
+
+
+form {
+  fieldset {
+    border-bottom: 1px solid $c-set-border-0;
+    margin: 1em 0;
+
+    > .field {
+      margin: 0 0 1em 0;
+
+      label {
+        .sub {
+          /*margin-left: 8px;*/
+          font-size: 0.8em;
+          color: #5a5a5a;
+
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+div.signup_form {
+  align-self: center;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 4px;
+  border: 1px solid #c9c9c9;
+}
+
+form.signup_form {
+  align-self: center;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 4px;
+  border: 1px solid #c9c9c9;
+
+  .card {
+    margin-bottom: 25px;
+
+    .card_content {
+
+      .heading {
+        /*font-size: 1.142rem;*/
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+
+      .card_section.inside {
+        background-color: #ededed;
+        padding: 10px!important; /*10px 10px 10px 20px!important;*/
+        /*padding-bottom: 10px!important;*/
+        @include rounded-corners();
+      }
+
+      .card_section {
+        display: block;
+        /*padding: 20px;*/
+        border-bottom: 1px solid $c-set-border-0;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+
+        .grid {
+          width: 100%;
+          /*width: calc(100% - 20px);*/
+
+          padding: 0;
+          /*margin: 0 auto;*/
+
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+
+          box-sizing: border-box;
+
+          .cell {
+            flex: 1 1 0%;
+            padding-right: 10px;
+            max-width: 100%;
+            min-width: 0;
+
+            margin: 0 0 1em 0;
+
+            .field {
+              position: relative;
+
+              label {
+                margin-bottom: 5px;
+
+                .sub {
+                  font-size: 0.8em;
+                  color: #5a5a5a;
+                }
+
+              }
+
+              .label_sub {
+                font-size: 0.7em;
+                line-height: 1.3em;
+                color: #5a5a5a;
+                margin-left: 2px;
+              }
+
+              .field_input, .hidden_input_wrapper {
+                padding: 5px 10px;
+                border: 1px solid #d3dbe2;
+                border-radius: 4px;
+                font-size: 1.14286rem;
+                line-height: 1.71429rem;
+                font-weight: 400;
+                text-transform: initial;
+                letter-spacing: initial;
+                box-sizing: border-box;
+                display: block;
+                width: 100%;
+
+                max-width: auto;
+                min-width: 75px;
+              }
+
+              .conditional_checkbox_wrapper {
+
+              }
+
+              .hidden_input_wrapper {
+                display: flex;
+                padding: 0!important;
+                background-color: #fff;
+
+                .hidden_input_addition {
+                  margin: 0 10px;
+                  align-self: center;
+                }
+
+                input {
+                  padding: 0!important;
+                  margin: 0!important;
+                  border: none!important;
+                }
+
+                input.right {
+                  padding: 0 0.75em!important;
+                }
+              }
+            }
+          }
+
+          @media screen and (max-width: 736px) and (orientation: portrait) {
+            .cell {
+              padding-right: 0!important;
+            }
+          }
+
+          @media screen and (orientation: portrait) {
+            .cell {
+              padding-right: 0!important;
+            }
+          }
+        }
+
+        @media screen and (max-width: 980px) {
+          .grid {
+            display: block!important;
+          }
+        }
+
+        @media screen and (max-width: 736px) {
+          .grid {
+            display: block!important;
+          }
+        }
+
+        @media screen and (max-width: 736px) and (orientation: portrait) {
+          .grid {
+            display: block!important;
+            width: 100%!important;
+          }
+        }
+
+        @media screen and (orientation: portrait) {
+          .grid {
+            display: block!important;
+            width: 100%!important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
