@@ -1,8 +1,8 @@
 const defaultState = {
     products: [{
-        giftName: 'Meet the Man Steel!',
-        giftPhrase: "Have you ever wanted to meet the man of steel? (I know I have!) Give your friend the trip of a lifetime with Superman!",
-        giftPrice: "5.00"
+        giftName: "",
+        giftPhrase: "",
+        giftPrice: ""
     }],
     companyName: 'The Daily Planet'
 };
@@ -25,24 +25,27 @@ export default(state = defaultState, action) => {
                 [action.field]: action.targetValue
             }
         case 'PRODUCT_HANDLER':
-            let newProducts = state.products.slice();
-            newProducts[action.index][action.field]=action.targetValue;
             return {
                 ...state,
-                products: newProducts
+                products: action.newProducts
             }
         case 'ADD_PRODUCT':
             let addProduct = state.products.slice();
             addProduct.push({
-                giftName: 'Meet the Man Steel!',
-                giftPhrase: "Have you ever wanted to meet the man of steel? (I know I have!) Give your friend the trip of a lifetime with Superman!",
-                giftPrice: "5.00"
+                giftName: '',
+                giftPhrase: "",
+                giftPrice: ""
             });
             return {
                 ...state,
                 products: addProduct
             }
-
+        case 'DELETE_THE_PRODUCT_ALREADY':
+            return {
+                ...state,
+                products: action.products
+            }
+        default:
+            return state;
     }
-    return state;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../../index.css';
 import ProductEntry from './ProductEntry.js';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import { geocodeByAddress, geocodeByPlaceId } from 'react-places-autocomplete';
 import {connect} from 'react-redux'
+import DeleteButton from './delete';
+
 
 const mapStateToProps = (state) => {
     return {
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     onFocus: () => {
-        dispatch({type: 'BUSINESS_DEMO_FOCUS', visibleDemo: 1})
+        dispatch({type: 'BUSINESS_DEMO_FOCUS', visibleDemo: -1})
     },
     changeHandler: (event, field) => {
         dispatch({type: 'FORM_HANDLER', field: field, targetValue: event.target.value})
@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
- class EntryForm extends React.Component {
+class EntryForm extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -49,12 +49,6 @@ const mapDispatchToProps = dispatch => ({
 
     render() {
 
-
-        const test = {
-            float: 'right',
-            position: 'relative'
-        }
-
         const input = {
             paddingRight: '20px !important'
         }
@@ -70,17 +64,15 @@ const mapDispatchToProps = dispatch => ({
             onChange: this.onChange,
         }
 
-        const focusHandler = () =>{
+        const focusHandler = () => {
             console.log('work already')
             this.props.onFocus();
         }
 
 
-
-
         return (
 
-            <div className="inner" >
+            <div className="inner">
                 <h3 className="inline">Enroll your business with Gifty</h3>
                 <form className="signup_form" method="post" action="">
                     <div className="card">
@@ -89,7 +81,7 @@ const mapDispatchToProps = dispatch => ({
                                 <div className="grid">
                                     <div className="cell">
                                         <div className="field">
-                                            <label htmlFor="first_name">Your Name</label>
+                                            <label htmlFor="first_name">Your Name </label>
                                             <input placeholder="Lois Lane" type="text" name="personal[first_name]"
                                                    id="first_name" onFocus={()=>focusHandler()}/>
                                         </div>
@@ -106,7 +98,7 @@ const mapDispatchToProps = dispatch => ({
                                 <div className="grid">
                                     <div className="cell">
                                         <div className="field">
-                                            <label htmlFor="location"  >Business Name</label>
+                                            <label htmlFor="location">Business Name</label>
                                             <input type="text" name="business[location]" id="location"
                                                    placeholder="The Daily Planet"
                                                    onChange={(e) => this.props.changeHandler(e, 'companyName')}
@@ -139,7 +131,8 @@ const mapDispatchToProps = dispatch => ({
                                     <div className="cell">
                                         <div className="field">
                                             <label htmlFor="location">Location (Gifty works worldwide!)</label>
-                                            <PlacesAutocomplete inputProps={inputProps} options={options} onFocus={()=>focusHandler()} />
+                                            <PlacesAutocomplete inputProps={inputProps} options={options}
+                                                                onFocus={()=>focusHandler()}/>
 
                                         </div>
                                     </div>
@@ -148,15 +141,16 @@ const mapDispatchToProps = dispatch => ({
                                 <h4>Please add some products of yours</h4>
                                 <div className="label_sub">Dont worry... You can always change this later.</div>
                                 {this.props.products.map((products, idx) => (
-                                    <div className="signup_form" >
-                                        <ProductEntry index={idx}></ProductEntry>
-                                        <input style={test} type="submit" name={"product"+{idx}}
-                                               className="button special" onClick={(e)=>this.props.addProduct(e)}
-                                               value="Add"/>
+                                    <div>
+                                        <div className="signup_form" key={idx}>
+                                            <ProductEntry index={idx}></ProductEntry>
+                                            <DeleteButton index={idx}/>
+                                            &nbsp;
+                                        </div>
                                         &nbsp;
                                     </div>
                                 ))}
-&nbsp;
+                                &nbsp;
                                 <ul className="actions">
                                     <li>
                                         <input className="button special" type="submit" value="Enroll!"/>
@@ -173,4 +167,4 @@ const mapDispatchToProps = dispatch => ({
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(EntryForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EntryForm)

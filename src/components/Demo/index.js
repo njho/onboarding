@@ -1,7 +1,6 @@
 import React from 'react';
 import BusinessDemo from './BusinessDemo.js';
 import ProductDemo from './ProductDemo.js';
-import demoReducer from '../../reducers/demoReducer.js';
 import { connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -24,7 +23,6 @@ const mapDispatchToProps = dispatch => ({
 class Demo extends React.Component {
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
     };
 
     render() {

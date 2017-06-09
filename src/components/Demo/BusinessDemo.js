@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 const mapStateToProps = (state) => {
     return {
         companyName: state.business.companyName,
-        products: state.business.products
+        products: state.business.products,
+        visibleDemo: state.demo.visibleDemo
     }
 };
 
@@ -16,29 +17,27 @@ class BusinessDemo extends React.Component {
     render() {
 
         let companyName = () => {
-            if (this.props.companyName === '') {
-
+            if (this.props.visibleDemo === -1 && this.props.companyName==='') {
                 return (
                     'The Daily Planet '
                 )
-            } else {
+            } if (this.props.visibleDemo === -1) {
                 return this.props.companyName;
 
             }
         }
 
         const productMap = () => {
-            return this.props.products.map((product) => {
+            return this.props.products.map((product, idx) => {
                     if (product.giftName === '') {
                         return (
-                            <div></div>
+                            <div key={idx}>'A Meeting with Superman!'</div>
                         )
 
                     }
                     else {
-                        console.log(product.giftName)
                         return (
-                            <div> '{product.giftName}' </div>
+                            <div key={idx}>'{product.giftName}' </div>
                         );
                     }
                 }
