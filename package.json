@@ -16,8 +16,7 @@
     "redux-devtools": "^3.4.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7",
-    "redux-devtools": "^3.4.0"
+
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
