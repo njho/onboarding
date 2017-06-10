@@ -3,6 +3,7 @@ import ProductEntry from './ProductEntry.js';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {connect} from 'react-redux'
 import DeleteButton from './delete';
+import SignIn from './SignIn';
 import { Picker } from 'emoji-mart';
 import '../../css/emoji-mart.css';
 
@@ -154,6 +155,8 @@ class EntryForm extends React.Component {
                                     </div>
                                 ))}
                                 &nbsp;
+                                <SignIn></SignIn>
+
                                 <ul className="actions">
                                     <li>
                                         <input className="button special" type="submit" value="Enroll!"/>

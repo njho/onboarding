@@ -1,7 +1,6 @@
 /**
  * Created by Machinatron on 2017-06-01.
  */
-
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -27,11 +26,6 @@ const mapDispatchToProps = dispatch => ({
 
 class ProductEntry extends React.Component {
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-    }
-
-
     render() {
         const focusHandler = (index) =>{
             this.props.onFocus(index);
@@ -56,13 +50,13 @@ class ProductEntry extends React.Component {
                                    value={this.props.product.giftName}
                                    onChange={(e) => changeHandler(e, this.props.index, 'giftName')}/>
                             <label htmlFor="product">What's the best way to describe this?</label>
-                            <input type="text" name="product[Phrase]" id="Phrase"
+                            <textarea type="text" rows="3" maxLength="300" name="product[Phrase]" id="Phrase"
                                    placeholder="Have you ever wanted to meet the man of steel? (I know I have!) Give your friend the trip of a lifetime with Superman!"
                                    onChange={(e) => changeHandler(e, this.props.index, 'giftPhrase')}/>
                             <label htmlFor="product">What should the end user pay for this?</label>
                             <div className="hidden_input_wrapper">
                                 <div className="hidden_input_addition">$</div>
-                                <input type="text" name="product[Price]" id="Price"
+                                <input type="number" name="product[Price]" id="Price"
                                        placeholder="5.00"
                                        onChange={(e) => changeHandler(e, this.props.index, 'giftPrice')}
                                 />
