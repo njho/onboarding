@@ -3,6 +3,8 @@ import ProductEntry from './ProductEntry.js';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {connect} from 'react-redux'
 import DeleteButton from './delete';
+import { Picker } from 'emoji-mart';
+import '../../css/emoji-mart.css';
 
 
 const mapStateToProps = (state) => {
@@ -74,6 +76,7 @@ class EntryForm extends React.Component {
 
             <div className="inner">
                 <h3 className="inline">Enroll your business with Gifty</h3>
+                <Picker onClick={this.addEmoji} />
                 <form className="signup_form" method="post" action="">
                     <div className="card">
                         <div className="card_content">

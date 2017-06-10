@@ -5,9 +5,6 @@ import EntryForm from './components/EntryForm';
 import Demo from './components/Demo';
 import Footer from './components/Footer';
 
-
-
-
 class App extends Component {
     constructor() {
         super();
