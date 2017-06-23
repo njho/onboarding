@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     letter-spacing: -0.025em;
     line-height: 1.4;
-    margin: 0 0 0.8em 0;
+    margin: 0 0 0.4em 0;
 }
 
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
@@ -941,7 +941,7 @@ body.is-ie #page-wrapper {
 /* Wrapper */
 
 #wrapper {
-    padding: 4.5em 4.5em 2.5em 4.5em ;
+    padding: 4em 3.5em 2em 3.5em ;
     display: -moz-flex;
     display: -webkit-flex;
     display: -ms-flex;

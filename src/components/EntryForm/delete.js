@@ -11,43 +11,47 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    addProduct: (index) =>
-        dispatch({type: 'ADD_PRODUCT'}),
-    deleteProduct: (index, products) =>{
-        var products1 = update(products, {$splice: [[index, 1]]})
-        console.log(products1);
-        console.log(index);
+    deleteProduct: (products) =>{
+/*
 
-        dispatch({type: 'DELETE_THE_PRODUCT_ALREADY', visibleDemo: index-1, products: products1})
+        var products1 = products.slice();
+        products1.splice(index,1);
+
+*/
+        console.log('delete product');
+        console.log(products);
+
+        dispatch({type: 'DELETE_THE_PRODUCT_ALREADY', visibleDemo: -1, products: products})
     }
 
 });
 
 const test = {
-    float: 'right',
     position: 'relative',
+    float: 'right',
     cursor: 'pointer'
 }
 
 
 class DeleteButton extends React.Component {
 
-    render() {
-        if (this.props.index < this.props.products.length-1 && this.props.products.length !==1 ) {
-            return (
-                <span style={test}
-                      onClick={(index)=>this.props.deleteProduct(this.props.index, this.props.products)}>
-            <IoIosTrashOutline />
-                </span>
-            );
-        }
-        return (
+    componentWillReceiveProps(nextProps) {
 
-            <span style={test} onClick={()=>this.props.addProduct(this.props.index)}>
-<IoAndroidAdd />
-                Add
-    </span>
-        )
+    }
+
+    deleteProduct(index) {
+        var products1 = update(this.props.products, {$splice: [[index, 1]]})
+        this.props.deleteProduct(products1)
+    }
+
+
+    render() {
+            return (
+                <div style={test}
+                      onClick={() => {this.deleteProduct(this.props.index)}}>
+                    <IoIosTrashOutline />
+                </div>
+            );
 
 
     }

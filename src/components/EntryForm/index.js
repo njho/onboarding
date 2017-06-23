@@ -1,11 +1,14 @@
 import React from 'react';
-import ProductEntry from './ProductEntry.js';
+import ProductEntryParent from './ProductEntry/ProductEntryParent'
+import ProductList from './ProductEntry/ProductList'
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {connect} from 'react-redux'
 import DeleteButton from './delete';
 import SignIn from './SignIn';
-import { Picker } from 'emoji-mart';
-import '../../css/emoji-mart.css';
+import LocationEntry from './LocationEntry/index';
+
+
+import StripeWrapper from './../Stripe/StripeWrapper';
 
 
 const mapStateToProps = (state) => {
@@ -29,7 +32,6 @@ const mapDispatchToProps = dispatch => ({
     }
 
 })
-
 
 class EntryForm extends React.Component {
     constructor() {
@@ -77,7 +79,6 @@ class EntryForm extends React.Component {
 
             <div className="inner">
                 <h3 className="inline">Enroll your business with Gifty</h3>
-                <Picker onClick={this.addEmoji} />
                 <form className="signup_form" method="post" action="">
                     <div className="card">
                         <div className="card_content">
@@ -115,7 +116,7 @@ class EntryForm extends React.Component {
                                 <div className="grid">
                                     <div className="cell">
                                         <div className="field">
-                                            <label htmlFor="instagram">Business Instagram Handle</label>
+                                            <label htmlFor="instagram">Instagram Handle</label>
                                             <div className="hidden_input_wrapper">
                                                 <div className="hidden_input_addition">@</div>
                                                 <input type="text" name="business[instagram]" id="instagram"
@@ -134,28 +135,29 @@ class EntryForm extends React.Component {
                                 <div className="grid">
                                     <div className="cell">
                                         <div className="field">
-                                            <label htmlFor="location">Location (Gifty works worldwide!)</label>
-                                            <PlacesAutocomplete inputProps={inputProps} options={options}
-                                                                onFocus={()=>focusHandler()}/>
+                                            &nbsp;
+                                            <h4 className="inline">Business Locations</h4>
+                                            <LocationEntry></LocationEntry>
 
                                         </div>
                                     </div>
                                 </div>
-
-                                <h4>Please add some products of yours</h4>
-                                <div className="label_sub">Dont worry... You can always change this later.</div>
-                                {this.props.products.map((products, idx) => (
-                                    <div>
-                                        <div className="signup_form" key={idx}>
-                                            <ProductEntry index={idx}></ProductEntry>
-                                            <DeleteButton index={idx}/>
-                                            &nbsp;
-                                        </div>
-                                        &nbsp;
-                                    </div>
-                                ))}
                                 &nbsp;
+
+
+                                <h4 className="inline">Product Information</h4>
+
+                                <ProductList></ProductList>
+
+                                <ProductEntryParent></ProductEntryParent>
+                                &nbsp;
+
+                                <h4 className="inline">Please provide your credit card information</h4>
+                                <StripeWrapper/>
+                                &nbsp;
+
                                 <SignIn></SignIn>
+                                &nbsp;
 
                                 <ul className="actions">
                                     <li>
@@ -167,10 +169,21 @@ class EntryForm extends React.Component {
                         </div>
                     </div>
                 </form>
-
             </div>
         )
     }
 }
-
+/*                                            <PlacesAutocomplete inputProps={inputProps} options={options}
+ onFocus={()=>focusHandler()}/>*/
 export default connect(mapStateToProps, mapDispatchToProps)(EntryForm)
+
+
+/*{this.props.products.map((products, idx) => (
+ <div key={idx}>
+
+ <Products index={idx}></Products>
+ &nbsp;
+ &nbsp;
+ </div>
+
+ ))}*/

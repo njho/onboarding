@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import Validation from 'react-validation';
+import validator from 'validator';
 
 
 const mapStateToProps = (state,ownProps) => {
@@ -13,7 +14,7 @@ const mapStateToProps = (state,ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    onFocus: (index) => {;
+    onFocus: (index) => {
         dispatch({type: 'PRODUCT_DEMO_FOCUS', visibleDemo: index})
     },
     changeHandler: (newProducts) => {
@@ -40,9 +41,11 @@ class SignIn extends React.Component {
         }
 
 
+
         return (
 
             <div className="grid">
+
                 <div className="cell" onFocus={()=>focusHandler(this.props.index)}>
                     <div className="field">
                         <label htmlFor="email">Email Address</label>
@@ -51,15 +54,9 @@ class SignIn extends React.Component {
                     </div>
                     <div className="field">
                         <label htmlFor="password">Password</label>
-                        <input placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" type="password"
+                        <input placeholder="••••••••" type="password"
                                name="personal[password]" id="password" onFocus={()=>focusHandler()}/>
                     </div>
-                    <div className="field">
-                        <label htmlFor="passwordValidation">Please re-enter your password</label>
-                        <input placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" type="password"
-                               name="personal[passwordValidation]" id="passwordValidation" onFocus={()=>focusHandler()}/>
-                    </div>
-
                 </div>
             </div>
         )

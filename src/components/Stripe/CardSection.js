@@ -4,10 +4,11 @@ import {CardElement} from 'react-stripe-elements';
 class CardSection extends React.Component {
     render() {
         return (
+            <div>
             <label>
-                Card details
-                <CardElement style={{base: {fontSize: '18px'}}} />
+                <CardElement style={{base: {fontSize: '18px'}, paddingRight: '10px'}} />
             </label>
+                </div>
         );
     }
 };

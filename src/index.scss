@@ -449,7 +449,7 @@ input, textarea, select, input[type="checkbox"] + label:before, input[type="radi
   line-height: 1.71429rem;*/
 }
 
-input[type="email"], input[type="tel"], input[type="text"], select, input[type="checkbox"] + label:before, input[type="radio"] + label:before {
+input[type="email"], input[type="password"], input[type="tel"], input[type="text"], select, input[type="checkbox"] + label:before, input[type="radio"] + label:before {
   height: 2.3em!important;
 }
 
@@ -482,7 +482,7 @@ form {
 div.signup_form {
   align-self: center;
   background-color: #fff;
-  padding: 50px;
+  padding: 30px 50px 30px 50px;
   border-radius: 4px;
   border: 1px solid #c9c9c9;
 }
@@ -490,9 +490,9 @@ div.signup_form {
 form.signup_form {
   align-self: center;
   background-color: #fff;
-  padding: 50px;
+/*  padding: 0px;
   border-radius: 4px;
-  border: 1px solid #c9c9c9;
+  border: 1px solid #c9c9c9;*/
 
   .card {
     margin-bottom: 25px;
@@ -647,6 +647,79 @@ form.signup_form {
   }
 }
 
+//For the ProductList Animation
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bounceOut {
+  20% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  50%, 55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+}
+
+.products-list {
+  .products-list-enter {
+    -webkit-animation-name: bounceIn;
+    -webkit-animation-duration: .8s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    animation-name: bounceIn;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+  }
+
+  .products-list-leave {
+    -webkit-animation-name: bounceOut;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    animation-name: bounceOut;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+  }
+}
 
 
 
