@@ -11,13 +11,15 @@ import InputContent from './InputField/InputContent.js';
 import ReactDOM from 'react-dom';
 import DeleteButton from '../delete';
 import update from 'immutability-helper';
+import Label from '../../Label/Label.js';
 
 
 const mapStateToProps = (state) => {
     return {
         visibleDemo: state.demo.visibleDemo,
         products: state.business.products,
-        demoProduct: state.demo.demoProduct
+        demoProduct: state.demo.demoProduct,
+        reRender: state.demo.reRender
     }
 };
 
@@ -35,7 +37,13 @@ const mapDispatchToProps = dispatch => ({
         dispatch({type: 'DEMO_HANDLER', demoProduct: demoProduct})
     },
     addProduct: (newProducts) =>
-        dispatch({type: 'ADD_PRODUCT', newProducts: newProducts, editor: false, demoProduct: demoProduct, visibleDemo: -1})
+        dispatch({
+            type: 'ADD_PRODUCT',
+            newProducts: newProducts,
+            editor: false,
+            demoProduct: demoProduct,
+            visibleDemo: -1
+        })
 
 })
 
@@ -61,6 +69,11 @@ class ProductEntry extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log('ProductEntry')
+        console.log(nextProps)
+    }
+
 
     _handleFormHeightChange() {
         if (this.state.formVisible) {
@@ -74,9 +87,7 @@ class ProductEntry extends React.Component {
     _getRefHeight(ref) {
         return ReactDOM.findDOMNode(this.refs[ref]).offsetHeight;
     }
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-    }
+
     render() {
 
 
@@ -91,29 +102,26 @@ class ProductEntry extends React.Component {
             this.props.changeHandler(demoProduct);
         }
 
-        function naiveDeepCopy( original )
-        {
+        function naiveDeepCopy(original) {
             // First create an empty object with
             // same prototype of our original source
-            var clone = Object.create( Object.getPrototypeOf( original ) ) ;
+            var clone = Object.create(Object.getPrototypeOf(original));
 
-            var i , descriptor , keys = Object.getOwnPropertyNames( original ) ;
+            var i, descriptor, keys = Object.getOwnPropertyNames(original);
 
-            for ( i = 0 ; i < keys.length ; i ++ )
-            {
+            for (i = 0; i < keys.length; i++) {
                 // Save the source's descriptor
-                descriptor = Object.getOwnPropertyDescriptor( original , keys[ i ] ) ;
+                descriptor = Object.getOwnPropertyDescriptor(original, keys[i]);
 
-                if ( descriptor.value && typeof descriptor.value === 'object' )
-                {
+                if (descriptor.value && typeof descriptor.value === 'object') {
                     // If the value is an object, recursively deepCopy() it
-                    descriptor.value = naiveDeepCopy( descriptor.value ) ;
+                    descriptor.value = naiveDeepCopy(descriptor.value);
                 }
 
-                Object.defineProperty( clone , keys[ i ] , descriptor ) ;
+                Object.defineProperty(clone, keys[i], descriptor);
             }
 
-            return clone ;
+            return clone;
         }
 
         const addProduct = () => {
@@ -181,6 +189,9 @@ class ProductEntry extends React.Component {
 <span style={test} onClick={() => addProduct()}>
 <IoAndroidAdd /> Add
     </span>
+
+
+
                             </div>
                         </div>
                     </div>

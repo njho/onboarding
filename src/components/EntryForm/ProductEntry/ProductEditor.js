@@ -11,6 +11,7 @@ import InputContent from './InputField/InputContent.js';
 import ReactDOM from 'react-dom';
 import DeleteButton from '../delete';
 import update from 'immutability-helper';
+import Label from '../../Label/Label'
 
 
 const mapStateToProps = (state) => {
@@ -30,13 +31,29 @@ const demoProduct = {
 
 const mapDispatchToProps = dispatch => ({
     onFocus: (index, product) => {
-        dispatch({type: 'PRODUCT_DEMO_FOCUS', visibleDemo: 'demo', editor: true, editorIndex: index, demoProduct: product})
+        dispatch({
+            type: 'PRODUCT_DEMO_FOCUS',
+            visibleDemo: 'demo',
+            editor: true,
+            editorIndex: index,
+            demoProduct: product
+        })
     },
     changeHandler: (demoProduct) => {
         dispatch({type: 'DEMO_HANDLER', demoProduct: demoProduct})
     },
     updateProduct: (newProducts) =>
-        dispatch({type: 'UPDATE_PRODUCT', newProducts: newProducts, editor: false, visibleDemo: -1, demoProduct: demoProduct})
+        dispatch({
+            type: 'UPDATE_PRODUCT',
+            newProducts: newProducts,
+            editor: false,
+            visibleDemo: -1,
+            demoProduct: {
+                giftName: "",
+                giftPhrase: "",
+                giftPrice: ""
+            }
+        })
 
 })
 
@@ -45,7 +62,11 @@ const test = {
 
 }
 
+
+
 class ProductEditor extends React.Component {
+
+
 
     constructor() {
         super();
@@ -58,8 +79,13 @@ class ProductEditor extends React.Component {
     componentDidMount() {
         this.setState({
             ...this.state,
-            contentMinHeight: 100
+            contentMinHeight: 100,
+            visible: false
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
     }
 
 
@@ -75,9 +101,14 @@ class ProductEditor extends React.Component {
     _getRefHeight(ref) {
         return ReactDOM.findDOMNode(this.refs[ref]).offsetHeight;
     }
+
     componentWillReceiveProps(nextProps) {
         console.log(nextProps)
     }
+    componentWillUnmount() {
+        clearTimeout(this.updateProduct)
+    }
+
     render() {
 
 
@@ -91,16 +122,27 @@ class ProductEditor extends React.Component {
             demoProduct[field] = event.target.value;
             this.props.changeHandler(demoProduct);
         }
+        var visible = false;
 
         const updateProduct = () => {
-console.log(this.props.editorIndex);
-            var newObj = update(this.props.products, {$splice: [[[this.props.editorIndex],1,this.props.demoProduct]]});
-            this.props.updateProduct(newObj);
             this.setState({
+                ...this.state,
+                visible: !this.state.visible,
                 emojiView: false,
                 formVisible: true
             })
+
+            setTimeout(
+                function () {
+
+                    var newObj = update(this.props.products, {$splice: [[[this.props.editorIndex], 1, this.props.demoProduct]]});
+                    this.props.updateProduct(newObj);
+                }.bind(this)
+                , 1000)
+
         }
+
+
 
 
         return (
@@ -151,9 +193,13 @@ console.log(this.props.editorIndex);
                                         <Picker color="#63C146" sheetSize="32" exclude={['recent']} title="pick yours"
                                                 onClick={this.addEmoji}/> : null}
                                 </div>
-<span style={test} onClick={() => updateProduct()}>
+<div onClick={() => updateProduct()}>
+    {this.state.visible ? null :     <span style={test} >
 <IoAndroidAdd /> Save
-    </span>
+    </span>}
+    </div>
+
+                                <Label visible={this.state.visible}></Label>
                             </div>
                         </div>
                     </div>

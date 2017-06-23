@@ -35,7 +35,8 @@ export default(state = defaultState, action) => {
                     giftName: "",
                     giftPhrase: "",
                     giftPrice: ""
-                }
+                },
+                editor: false
             }
         case 'DEMO_HANDLER':
             console.log('DEMO_HANDLER')
@@ -49,14 +50,17 @@ export default(state = defaultState, action) => {
                 ...state,
                 editor: action.editor,
                 demoProduct: action.demoProduct,
-                visibleDemo: -1
+                visibleDemo: -1,
+                reRender: false
             }
         case 'UPDATE_PRODUCT':
             console.log('ADD_PRODUCT')
             return {
                 ...state,
-                editor: action.editor,
-                demoProduct: action.demoProduct
+                editor: false,
+                demoProduct: action.demoProduct,
+                visibleDemo: -1,
+                reRender: true
             }
         default:
             return state;

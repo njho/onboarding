@@ -12,15 +12,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     deleteProduct: (products) =>{
-/*
-
-        var products1 = products.slice();
-        products1.splice(index,1);
-
-*/
-        console.log('delete product');
-        console.log(products);
-
         dispatch({type: 'DELETE_THE_PRODUCT_ALREADY', visibleDemo: -1, products: products})
     }
 

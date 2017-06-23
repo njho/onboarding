@@ -12,21 +12,23 @@ import ProductEntry from './ProductEntry.js';
 const mapStateToProps = (state) => {
     return {
         editor: state.demo.editor,
+        reRender: state.demo.reRender
     }
 };
 
 const mapDispatchToProps = dispatch => ({})
 
-
 class ProductEntryParent extends React.Component {
-
     constructor() {
         super();
     }
 
+    componentWillReceiveProps(nextProps) { console.log(nextProps)
+    }
+
     render() {
 
-        const renderWhat = () => {
+        var renderWhat = () => {
             if (this.props.editor === false) {
                 return (
                     <ProductEntry></ProductEntry>
@@ -34,19 +36,15 @@ class ProductEntryParent extends React.Component {
             } else {
                 return (
                         <ProductEditor></ProductEditor>
-
                 )
             }
         }
-
 
         return(
             <div>
                 {renderWhat()}
             </div>
         )
-
-
     }
 }
 

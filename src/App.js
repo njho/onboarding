@@ -4,6 +4,7 @@ import './main.css';
 import EntryForm from './components/EntryForm';
 import Demo from './components/Demo';
 import Footer from './components/Footer';
+import Label from './components/Label/Label.js'
 
 class App extends Component {
     constructor() {
@@ -20,6 +21,7 @@ class App extends Component {
                 <section id="wrapper">
                     <div className="header">
                     </div>
+
 
                     <EntryForm ></EntryForm>
                     <Footer></Footer>

@@ -4,6 +4,7 @@ import Validation from 'react-validation';
 import validator from 'validator';
 
 
+
 const mapStateToProps = (state,ownProps) => {
     return {
         product: state.business.products[ownProps.index],
