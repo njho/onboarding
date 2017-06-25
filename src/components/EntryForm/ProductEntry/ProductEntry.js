@@ -58,7 +58,8 @@ class ProductEntry extends React.Component {
         super();
         this.state = {
             emojiView: false,
-            formVisible: true
+            formVisible: true,
+            details: false
         };
     }
 
@@ -125,16 +126,25 @@ class ProductEntry extends React.Component {
         }
 
         const addProduct = () => {
-            var demoProduct = naiveDeepCopy(this.props.demoProduct);
-            console.log(this.props.products)
-            const newProducts = this.props.products.concat([demoProduct]);
-            console.log('this is from addProduct');
-            console.log(newProducts);
-            this.props.addProduct(newProducts);
-            this.setState({
-                emojiView: false,
-                formVisible: true
-            })
+            if (this.props.demoProduct.giftName === '' || this.props.demoProduct.giftPrice === '' || this.props.demoProduct.giftPhrase === '') {
+                this.setState({
+                    ...this.state,
+                    details: true
+                })
+            } else {
+                var demoProduct = naiveDeepCopy(this.props.demoProduct);
+                console.log(this.props.products)
+                const newProducts = this.props.products.concat([demoProduct]);
+                console.log('this is from addProduct');
+                console.log(newProducts);
+                this.props.addProduct(newProducts);
+                this.setState({
+                    emojiView: false,
+                    formVisible: true,
+                    details: false
+                })
+            }
+
         }
 
 
@@ -186,10 +196,11 @@ class ProductEntry extends React.Component {
                                         <Picker color="#63C146" sheetSize="32" exclude={['recent']} title="pick yours"
                                                 onClick={this.addEmoji}/> : null}
                                 </div>
+                                <label>
 <span style={test} onClick={() => addProduct()}>
 <IoAndroidAdd /> Add
-    </span>
-
+    </span> {this.state.details ? <span className="alert">Please enter all necessary details</span> : null }
+                                </label>
 
 
                             </div>

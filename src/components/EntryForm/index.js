@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductEntryParent from './ProductEntry/ProductEntryParent'
 import ProductList from './ProductEntry/ProductList'
+import LocationList from './LocationEntry/LocationList'
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {connect} from 'react-redux'
 import DeleteButton from './delete';
@@ -79,56 +80,52 @@ class EntryForm extends React.Component {
 
             <div className="inner">
                 <h3 className="inline">Enroll your business with Gifty</h3>
-                <form className="signup_form" method="post" action="">
+                <form className="signup_form" action={(e)=>this.handleSubmit(e)}>
                     <div className="card">
                         <div className="card_content">
                             <div className="card_section">
-                                <div className="grid">
-                                    <div className="cell">
-                                        <div className="field">
-                                            <label htmlFor="first_name">Your Name </label>
-                                            <input placeholder="Lois Lane" type="text" name="personal[first_name]"
-                                                   id="first_name" onFocus={()=>focusHandler()}/>
-                                        </div>
+                                <div style={{paddingRight: '10px'}}>
+                                    <div className="grid">
+                                        <div className="cell">
+                                            <div className="field">
+                                                <label htmlFor="first_name">Your Name </label>
+                                                <input placeholder="Lois Lane" type="text" name="personal[first_name]"
+                                                       id="first_name" onFocus={()=>focusHandler()}/>
+                                            </div>
 
-                                    </div>
-                                    <div className="cell">
-                                        <div className="field">
-                                            <label htmlFor="email">Email Address</label>
-                                            <input placeholder="lois@dailyplanet.com" type="email"
-                                                   name="personal[email]" id="email" onFocus={()=>focusHandler()}/>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="grid">
-                                    <div className="cell">
-                                        <div className="field">
-                                            <label htmlFor="location">Business Name</label>
-                                            <input type="text" name="business[location]" id="location"
-                                                   placeholder="The Daily Planet"
-                                                   onChange={(e) => this.props.changeHandler(e, 'companyName')}
-                                                   onFocus={()=>focusHandler()}
+                                    <div className="grid">
+                                        <div className="cell">
+                                            <div className="field">
+                                                <label htmlFor="location">Business Name</label>
+                                                <input type="text" name="business[location]" id="location"
+                                                       placeholder="The Daily Planet"
+                                                       onChange={(e) => this.props.changeHandler(e, 'companyName')}
+                                                       onFocus={()=>focusHandler()}
 
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="grid">
-                                    <div className="cell">
-                                        <div className="field">
-                                            <label htmlFor="instagram">Instagram Handle</label>
-                                            <div className="hidden_input_wrapper">
-                                                <div className="hidden_input_addition">@</div>
-                                                <input type="text" name="business[instagram]" id="instagram"
-                                                       placeholder="gifty.link" onFocus={()=>focusHandler()}/>
+                                                />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="cell">
-                                        <div className="field">
-                                            <label htmlFor="business_type">Business Type</label>
-                                            <input type="text" name="business[business_type]" id="business_type"
-                                                   placeholder="Upscale Bakery" onFocus={()=>focusHandler()}/>
+                                    <div className="grid">
+                                        <div className="cell">
+                                            <div className="field">
+                                                <label htmlFor="instagram">Instagram Handle</label>
+                                                <div className="hidden_input_wrapper">
+                                                    <div className="hidden_input_addition">@</div>
+                                                    <input type="text" name="business[instagram]" id="instagram"
+                                                           placeholder="gifty.link" onFocus={()=>focusHandler()}/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="cell">
+                                            <div className="field">
+                                                <label htmlFor="business_type">Business Type</label>
+                                                <input type="text" name="business[business_type]" id="business_type"
+                                                       placeholder="News Agency" onFocus={()=>focusHandler()}/>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +133,8 @@ class EntryForm extends React.Component {
                                     <div className="cell">
                                         <div className="field">
                                             &nbsp;
-                                            <h4 className="inline">Business Locations</h4>
+                                            <h4 className="inline">Business Location & Hours</h4>
+                                            <LocationList></LocationList>
                                             <LocationEntry></LocationEntry>
 
                                         </div>
@@ -187,3 +185,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(EntryForm)
  </div>
 
  ))}*/
+
+/*                                    <div className="cell">
+ <div className="field">
+ <label htmlFor="email">Email Address</label>
+ <input placeholder="lois@dailyplanet.com" type="email"
+ name="personal[email]" id="email" onFocus={()=>focusHandler()}/>
+ </div>
+ </div>*/

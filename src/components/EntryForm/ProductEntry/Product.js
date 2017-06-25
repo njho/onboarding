@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../../../css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
-import {IoAndroidRemove, IoAndroidAdd} from 'react-icons/lib/io/';
+import {IoAndroidRemove, IoAndroidAdd, IoIosTrashOutline} from 'react-icons/lib/io/';
 import InputField from './InputField/InputField';
 import InputContent from './InputField/InputContent.js';
 import ReactDOM from 'react-dom';
@@ -23,7 +23,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     onFocus: (index, product) => {
-        dispatch({type: 'PRODUCT_DEMO_FOCUS', visibleDemo: index, editor: true, editorIndex: index, demoProduct: product})
+        dispatch({
+            type: 'PRODUCT_DEMO_FOCUS',
+            visibleDemo: index,
+            editor: true,
+            editorIndex: index,
+            demoProduct: product
+        })
     },
     changeHandler: (newProducts) => {
         dispatch({type: 'PRODUCT_HANDLER', newProducts: newProducts})
@@ -35,6 +41,21 @@ const test = {
     cursor: 'pointer',
     float: 'left',
     display: 'inline-block !important'
+
+}
+const test2 = {
+    cursor: 'pointer',
+    float: 'right',
+    display: 'inline-block !important'
+
+}
+const test1 = {
+    cursor: 'pointer',
+    float: 'left',
+    display: 'inline-block !important',
+    width: '90%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden'
 
 }
 
@@ -55,7 +76,6 @@ class Product extends React.Component {
     }
 
 
-
     focusHandler = ()=> {
         console.log('focushandler');
         this.props.onFocus(this.props.index, this.props.product);
@@ -64,13 +84,16 @@ class Product extends React.Component {
     render() {
 
         return (
-            <div>
-                <div onClick={this.focusHandler}>
-                    <div style={test} onClick={()=>this.focusHandler}>
-                        {this.props.product.giftName}            ${this.props.product.giftPrice}
+            <div style={{verticalAlign: 'middle'}} >
+               <div className="green" style={test1} onClick={this.focusHandler}>
+                    <div onClick={()=>this.focusHandler}>
+                        {this.props.product.giftName}
                     </div>
                 </div>
-                <DeleteButton style={{float: 'right'}} index={this.props.index}></DeleteButton>
+                <div style={test2}
+                     onClick={() => {this.deleteLocation(this.props.index)}}>
+                    <IoIosTrashOutline />
+                </div>
             </div>
         )
 
@@ -84,3 +107,12 @@ class Product extends React.Component {
  */
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
+
+/* <div>
+ <div onClick={this.focusHandler}>
+ <div style={test} onClick={()=>this.focusHandler}>
+ {this.props.product.giftName} ${this.props.product.giftPrice}asdfsadf
+ </div>
+ </div>
+ <DeleteButton style={{float: 'right'}} index={this.props.index}></DeleteButton>
+ </div>*/

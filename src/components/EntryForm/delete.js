@@ -12,6 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     deleteProduct: (products) =>{
+        console.log('delete');
+        console.log(products);
         dispatch({type: 'DELETE_THE_PRODUCT_ALREADY', visibleDemo: -1, products: products})
     }
 

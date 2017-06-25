@@ -37,19 +37,20 @@ class Label extends React.Component {
     render() {
         var component;
         if (this.props.visible) {
-            component = <div onClick={()=>this.toggle()}>
+            component = <div onClick={()=>this.toggle()} style={{display: 'flex', alignItems: 'center'}}>
                 <svg height="0.75em" width="0.75em"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
                     <path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"/>
                 </svg>
+                &emsp;
                 Saved
             </div>
         }
 
 
         return (
-            <div className="example" style={{position: 'absolute'}}>
+            <div className="example green" >
                 <CSSTransitionGroup
                     transitionName="example"
                     transitionEnterTimeout={200}

@@ -16,22 +16,18 @@ const mapDispatchToProps = dispatch => ({
 class BusinessDemo extends React.Component {
 
     willReceiveProps(nextProps) {
-        console.log('this is from BusinessDemo');
-        console.log(nextProps);
+/*        console.log('this is from BusinessDemo');
+        console.log(nextProps);*/
     }
 
     render() {
-
-
-
         let companyName = () => {
-
-            if(this.props.products.length < 1) {
+            if(this.props.products.length < 1 && this.props.companyName==='') {
                 return (
                     'The Daily Planet '
                 )
             } else {
-                if (this.props.visibleDemo === -1 || this.props.companyName==='') {
+                if (this.props.visibleDemo === -1 && this.props.companyName==='') {
                     return (
                         'The Daily Planet '
                     )
@@ -42,8 +38,6 @@ class BusinessDemo extends React.Component {
         }
 
         const productMap = () => {
-            console.log('productMap');
-            console.log(this.props.products);
 
             if(this.props.products.length < 1) {
                 return(

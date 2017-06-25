@@ -3,24 +3,24 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import Product from './Product.js';
+import Location from './Location.js';
 import { CSSTransitionGroup } from 'react-transition-group';
-import './InputField/example.css'
+import '../ProductEntry/InputField/example.css'
 import update from 'immutability-helper'
 
 const mapStateToProps = (state) => {
     return {
-        products: state.business.products
+        locations: state.business.locations
     }
 };
 
 const mapDispatchToProps = dispatch => ({
-/*    deleteProduct: (index, products) => {
-        var products1 = update(products, {$splice: [[index, 1]]})
-        console.log('delete product');
-        console.log(products1);
-        dispatch({type: 'DELETE_THE_PRODUCT_ALREADY', visibleDemo: -1, products: products1})
-    }*/
+    deleteProduct: (index, locations) => {
+        var locations1 = update(locations, {$splice: [[index, 1]]})
+        console.log('delete location');
+        console.log(locations1);
+        dispatch({type: 'DELETE_THE_LOCATION_ALREADY', visibleDemo: -1, locations: locations1})
+    }
 
 });
 
@@ -40,13 +40,13 @@ class ProductList extends React.Component {
 
     render() {
         const renderThis = () => {
-            if(!this.props.products) {
+            if(!this.props.locations) {
                 return null
             } else {
                 return(
-                    this.props.products.map((product, idx) => (
-                        <div  key={idx}>
-                            <Product product ={product} index={idx}></Product>
+                    this.props.locations.map((location, idx) => (
+                        <div style={{padding: '5px 0px 5px 0px'}} key={idx}>
+                            <Location location ={location} index={idx}></Location>
                             &nbsp;
                             &nbsp;
                         </div>

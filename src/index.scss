@@ -18,7 +18,6 @@
 /* 	==========================================================================================
 	========================================================================================== */
 
-
 /* 	=============================================
 	 VARIABLES
 	============================================= */
@@ -41,22 +40,21 @@ $c-warm-green: #5BB67B;
 /*  /////////////////////////////////////////
      MODERN WHITE + RED
     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-$c-set-bg-0: $c-grey; 				/* BG --red-- grey */
-$c-set-bg-1: #FFFFFF; 				/* BG white */
+$c-set-bg-0: $c-grey; /* BG --red-- grey */
+$c-set-bg-1: #FFFFFF; /* BG white */
 
-$c-set-text-0: #FEFEFF; 			/* Grey (on red) */
-$c-set-text-1: #333; /*#2A2A2A;*/	/* Grey (on white) */
+$c-set-text-0: #FEFEFF; /* Grey (on red) */
+$c-set-text-1: #333; /*#2A2A2A;*/
+/* Grey (on white) */
 $c-set-text-2: #37474F; /*#445963;*//* Blue (on red/white) */
-$c-set-text-3: #828F9B; 			/* Light Blue (sub Blue) */
+$c-set-text-3: #828F9B; /* Light Blue (sub Blue) */
 
 $c-set-border-0: #D3DBE2; /*#FFFFFF;*/
 $c-set-border-1: $c-set-text-2; /*#A9A9A9; 	/* Blue (on white) */
-$c-set-border-2: $c-set-text-2; 	/* Blue (on red/white) */
+$c-set-border-2: $c-set-text-2; /* Blue (on red/white) */
 
 $c-set-highlight-0: $c-coral; /*$c-warm-green; /*$c-sms-green; /*#EB5155; /* #EA5256 */
 $c-set-highlight-1: $c-coral; /*$c-warm-green; /*$c-sms-green;*/
-
-
 
 /*  /////////////////////////////////////////
      STYLES
@@ -67,11 +65,9 @@ $c-set-highlight-1: $c-coral; /*$c-warm-green; /*$c-sms-green;*/
 $c-theme-identity: $c-set-highlight-0;
 $c-theme-transparent: transparent;
 
-
 /*  --- Header -------------------------- */
 
 /*$c-header-bg: $c-set-bg-3;*/
-
 
 /* 	-----------------------------------------
      Layout
@@ -79,7 +75,6 @@ $c-theme-transparent: transparent;
 
 /* 	--- Compose ------------------------- */
 /*$l-compose-input-text-size: 22;*/
-
 
 /* 	=============================================
 	 @ MIXINS
@@ -91,16 +86,16 @@ $c-theme-transparent: transparent;
 }
 
 @mixin proxima-nova {
-  font-family: "proxima-nova", sans-serif!important;
+  font-family: "proxima-nova", sans-serif !important;
 }
 
 /* Rounded Corners ---------------------- */
-@mixin rounded-corners ($radius: 3) {
+@mixin rounded-corners($radius: 3) {
   border-radius: $radius;
 }
 
 /* Complex Corners ----------------------- */
-@mixin complex-corners ($tl: 3, $tr: 3, $br: 3, $bl: 3) {
+@mixin complex-corners($tl: 3, $tr: 3, $br: 3, $bl: 3) {
   border-radius: $tl $tr $br $bl;
 }
 
@@ -108,8 +103,6 @@ $c-theme-transparent: transparent;
 @mixin overflow {
   overflow: hidden;
 }
-
-
 
 /* 	=============================================
 	 BODY
@@ -136,8 +129,6 @@ section {
   -webkit-transition: -webkit-transform .4s ease-in-out, opacity .4s ease-in-out;
   padding: 30px 0;
 }
-
-
 
 section#banner {
   position: fixed;
@@ -171,7 +162,7 @@ section#wrapper {
 }
 
 section#wrapper.hide_banner {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 /* -- Wrapper ---------------------------- */
@@ -204,7 +195,6 @@ section#wrapper > .header {
   right: 0;
 }
 
-
 /*  --- Signup --------------------------- */
 .signup_container {
   position: relative;
@@ -212,23 +202,23 @@ section#wrapper > .header {
 }
 
 ul.bubbles {
-  position: absolute!important;
+  position: absolute !important;
   top: 0;
 
   background-color: #fafafa;
-  padding-top: 5px!important;
+  padding-top: 5px !important;
 
   /* Bubble */
   li.bubble_container {
-    display: flex!important;
+    display: flex !important;
     flex: 1;
     justify-content: flex-end;
 
     margin: 5px -20px 5px 40px;
 
-    opacity: 1!important;
+    opacity: 1 !important;
     white-space: pre-wrap;
-    position: relative!important;
+    position: relative !important;
   }
   li.is_bot_bubble_container {
     justify-content: flex-start;
@@ -265,14 +255,13 @@ ul.bubbles {
       line-height: 12px;
     }
 
-
     li.bubble_container {
       margin: 5px -30px 5px 40px;
     }
 
     li.is_bot_bubble_container {
       margin-left: -30px;
-      margin-right: 20px!important;
+      margin-right: 20px !important;
     }
   }
 
@@ -281,7 +270,6 @@ ul.bubbles {
       font-size: 12px;
       line-height: 12px;
     }
-
 
     li.bubble_container {
       margin: 5px -30px 5px 40px;
@@ -302,7 +290,6 @@ ul.bubbles {
 
     padding: 10 10 0 10;
   }
-
 
   /*li.bubble {
       position: relative!important;
@@ -341,7 +328,6 @@ ul.signup {
 
 }
 
-
 /* 	-----------------------------------------
      SUPPLEMENTAL
     ----------------------------------------- */
@@ -358,8 +344,8 @@ ul.blank {
   }
 
   li, li a, li a:hover {
-    text-decoration: none!important;
-    color: inherit!important;
+    text-decoration: none !important;
+    color: inherit !important;
     border: none;
   }
 }
@@ -384,14 +370,14 @@ b {
 
 /* 	--- Buttons ------------------------- */
 input.button.special, input.button.special:hover, a.button.special, a.button.special:hover {
-  background-color: $c-set-highlight-1!important;
-  border: 1px solid $c-set-highlight-1!important;
-  color: $c-set-text-0!important;
+  background-color: $c-set-highlight-1 !important;
+  border: 1px solid $c-set-highlight-1 !important;
+  color: $c-set-text-0 !important;
 }
 
 input.button.special.sub, input.button.special.sub:hover, a.button.special.sub, a.button.special.sub:hover {
-  background-color: transparent!important;
-  color: $c-set-highlight-1!important;
+  background-color: transparent !important;
+  color: $c-set-highlight-1 !important;
 }
 
 .button {
@@ -419,26 +405,23 @@ input.button.special.sub, input.button.special.sub:hover, a.button.special.sub, 
   cursor: pointer;
 }
 
-
 footer ul li a:hover {
-  color: $c-set-highlight-1!important;
+  color: $c-set-highlight-1 !important;
 }
-
-
 
 /*  --- Inputs --------------------------- */
 label {
-  margin: 0!important;
+  margin: 0 !important;
   font-size: 0.8em;
   font-weight: 300;
   color: #31373d;
 }
 
 input, textarea, select, input[type="checkbox"] + label:before, input[type="radio"] + label:before {
-  border: 1px solid $c-set-border-0!important;
+  border: 1px solid $c-set-border-0 !important;
 
   @include proxima-nova;
-  font-size: 1rem!important;
+  font-size: 1rem !important;
   font-weight: 400;
   /*letter-spacing: 1px;*/
 
@@ -450,13 +433,12 @@ input, textarea, select, input[type="checkbox"] + label:before, input[type="radi
 }
 
 input[type="email"], input[type="password"], input[type="tel"], input[type="text"], select, input[type="checkbox"] + label:before, input[type="radio"] + label:before {
-  height: 2.3em!important;
+  height: 2.3em !important;
 }
 
 .select-wrapper::before {
   content: '';
 }
-
 
 form {
   fieldset {
@@ -490,9 +472,9 @@ div.signup_form {
 form.signup_form {
   align-self: center;
   background-color: #fff;
-/*  padding: 0px;
-  border-radius: 4px;
-  border: 1px solid #c9c9c9;*/
+  /*  padding: 0px;
+    border-radius: 4px;
+    border: 1px solid #c9c9c9;*/
 
   .card {
     margin-bottom: 25px;
@@ -507,7 +489,7 @@ form.signup_form {
 
       .card_section.inside {
         background-color: #ededed;
-        padding: 10px!important; /*10px 10px 10px 20px!important;*/
+        padding: 10px !important; /*10px 10px 10px 20px!important;*/
         /*padding-bottom: 10px!important;*/
         @include rounded-corners();
       }
@@ -539,6 +521,10 @@ form.signup_form {
             min-width: 0;
 
             margin: 0 0 1em 0;
+
+            .float-right {
+              float: right;
+            }
 
             .field {
               position: relative;
@@ -583,7 +569,7 @@ form.signup_form {
 
               .hidden_input_wrapper {
                 display: flex;
-                padding: 0!important;
+                padding: 0 !important;
                 background-color: #fff;
 
                 .hidden_input_addition {
@@ -592,13 +578,34 @@ form.signup_form {
                 }
 
                 input {
-                  padding: 0!important;
-                  margin: 0!important;
-                  border: none!important;
+                  padding: 0 !important;
+                  margin: 0 !important;
+                  border: none !important;
                 }
 
                 input.right {
-                  padding: 0 0.75em!important;
+                  padding: 0 0.75em !important;
+                }
+              }
+
+              .hidden_input_wrapper2 {
+                display: flex;
+                padding: 0px 0px 0px 4px;
+                background-color: #fff;
+
+                .hidden_input_addition {
+                  margin: 0 10px;
+                  align-self: center;
+                }
+
+                input {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                  border: none !important;
+                }
+
+                input.right {
+                  padding: 0 0.75em !important;
                 }
               }
             }
@@ -606,40 +613,68 @@ form.signup_form {
 
           @media screen and (max-width: 736px) and (orientation: portrait) {
             .cell {
-              padding-right: 0!important;
+              padding-right: 0 !important;
+              .float-right {
+                float: none;
+
+              }
+              .hidden_input_wrapper2 {
+                display: flex;
+                padding: 0px 0px 0px 4px;
+                background-color: #fff;
+                justify-content: space-between;
+              }
             }
+
           }
 
           @media screen and (orientation: portrait) {
             .cell {
-              padding-right: 0!important;
+              padding-right: 0 !important;
+              .float-right {
+                float: none
+
+              }
+              .hidden_input_wrapper2 {
+                display: flex;
+                padding: 0px 0px 0px 4px;
+                background-color: #fff;
+                justify-content: space-between;
+              }
             }
+
           }
         }
 
         @media screen and (max-width: 980px) {
           .grid {
-            display: block!important;
+            display: block !important;
+            .float-right {
+              float: none !important;
+
+            }
           }
+
         }
 
         @media screen and (max-width: 736px) {
           .grid {
-            display: block!important;
+            display: block !important;
+
           }
         }
 
         @media screen and (max-width: 736px) and (orientation: portrait) {
           .grid {
-            display: block!important;
-            width: 100%!important;
+            display: block !important;
+            width: 100% !important;
           }
         }
 
         @media screen and (orientation: portrait) {
           .grid {
-            display: block!important;
-            width: 100%!important;
+            display: block !important;
+            width: 100% !important;
           }
         }
       }
@@ -721,10 +756,32 @@ form.signup_form {
   }
 }
 
+.border-none {
+  border: none !important
+}
 
+.no-margin {
+  margin: 0px !important
+}
 
+.alert {
+  font-size: 80% !important;
+  color: #f2435d;
+  margin-left: 30px;
+}
 
-
+.green {
+  color: #8ed677;
+  font-size: 90%;
+}
+.fade {
+  top: 0;
+  left: 0;
+  width: 90%;
+  cursor: pointer;
+  background: linear-gradient(to right, rgba(255,255,255,0) 30%,rgba(255,255,255,1) 100%);
+  position: absolute;
+}
 
 
 

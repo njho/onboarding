@@ -5,13 +5,15 @@ const defaultState = {
         giftPhrase: "",
         giftPrice: ""
     },
-    editor: false
+    editor: false,
+    locationEditor: false
 };
 
 export default(state = defaultState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'PRODUCT_DEMO_FOCUS':
-        { console.log('PRODUCT_DEMO_FOCUS')
+        {
+            console.log('PRODUCT_DEMO_FOCUS')
             console.log(action.editorIndex);
             return {
                 ...state,
@@ -30,6 +32,7 @@ export default(state = defaultState, action) => {
         case 'DELETE_THE_PRODUCT_ALREADY':
             console.log('DELETE_THE_PRODUCT_ALREADY')
             return {
+                ...state,
                 visibleDemo: -1,
                 demoProduct: {
                     giftName: "",
@@ -43,6 +46,12 @@ export default(state = defaultState, action) => {
             return {
                 ...state,
                 demoProduct: action.demoProduct
+            }
+        case 'LOCATION_HANDLER':
+            console.log('LOCATION_HANDLER')
+            return {
+                ...state,
+                locationParams: action.locationParams
             }
         case 'ADD_PRODUCT':
             console.log('ADD_PRODUCT')
@@ -60,8 +69,29 @@ export default(state = defaultState, action) => {
                 editor: false,
                 demoProduct: action.demoProduct,
                 visibleDemo: -1,
-                reRender: true
+                reRender: true,
+                locationParams: null
             }
+        case 'UPDATE_LOCATION':
+            console.log('UPDATE_LOCATION');
+            return {
+                ...state,
+                locationEditor: false,
+                defaultParams: action.defaultParams
+            }
+        case 'LOCATION_DEMO_FOCUS':
+        {
+            console.log('PRODUCT_DEMO_FOCUS')
+            return {
+                ...state,
+                locationDemo: true,
+                locationEditor: true,
+                locationIndex: action.locationIndex,
+                locationParams: action.locationParams
+
+            }
+        }
+
         default:
             return state;
     }
