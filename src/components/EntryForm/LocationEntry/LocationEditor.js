@@ -107,8 +107,9 @@ class LocationEditor extends React.Component {
         }
 
         const handleSelect = (address, placeId) => {
-            this.setState({...this.state, address, placeId});
-            console.log(placeId);
+        /*    this.setState({...this.state, address, placeId});
+            console.log(placeId);*/
+            this.handleChange(address, 'address')
             geocodeByPlaceId(placeId)
                 .then(results=>getLatLng(results[0]))
                 .then(({ lat, lng }) => {
