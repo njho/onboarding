@@ -1292,13 +1292,6 @@ body.is-loading #wrapper > * {
 
 }
 
-@media screen and (max-width: 470px) {
-
-    #banner {
-        width: 100%;
-    }
-
-}
 
 body.is-loading #banner .inner ul:after {
     opacity: 1;
@@ -1310,4 +1303,42 @@ body.is-loading #banner .inner ul:after {
     position: fixed;
     bottom: 0;
     right: 0;
+}
+
+@media screen and (max-width: 470px) {
+
+    #banner {
+        width: 100%;
+    }
+
+    #page-wrapper {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-direction: column-reverse !important;
+        -webkit-flex-direction: column-reverse !important;
+        -ms-flex-direction: column-reverse !important;
+        flex-direction: column-reverse !important;
+        -moz-align-items: stretch;
+        -webkit-align-items: stretch;
+        -ms-align-items: stretch;
+        align-items: stretch;
+        min-height: 100vh;
+    }
+
+    #wrapper {
+        width: 100%
+    }
+
+
+
+}
+
+@media screen and (orientation: portrait){
+    section#banner {
+        position: relative;
+        width: 100%
+    }
+
 }
