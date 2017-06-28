@@ -332,6 +332,14 @@ div.signup_form {
   border-radius: 4px;
   border: 1px solid #c9c9c9; }
 
+@media screen and (max-width: 470px) {
+  div.signup_form {
+    align-self: center;
+    background-color: #fff;
+    padding: 30px 10px 30px 10px;
+    border-radius: 4px;
+    border: 1px solid #c9c9c9; } }
+
 form.signup_form {
   align-self: center;
   background-color: #fff;

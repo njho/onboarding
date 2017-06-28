@@ -8,6 +8,7 @@ import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 import {IoAndroidRemove, IoAndroidAdd} from 'react-icons/lib/io/';
 import update from 'immutability-helper';
+import InputMask from 'react-input-mask';
 
 var MaskedInput = require('react-maskedinput');
 
@@ -215,6 +216,84 @@ class LocationSubmit extends React.Component {
                                                      value={this.state.wkClose}
                                                      onChange={(e)=>handleChange(e,'wkClose')}
                                                      style={{border: 'none !important', marginLeft: '5px'}}/>
+                                        <div className="hidden_input_addition no-margin">
+                                            <select value={this.state.wkClosePeriod} className="border-none"
+                                                    style={{border: 'none !important'}}
+                                                    onChange={(e)=>handleChange(e,'wkClosePeriod')}>
+                                                <option value="AM">AM</option>
+                                                <option value="PM">PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="grid">
+                    <div className="cell">
+                        <div className="field">
+                            <label htmlFor="instagram">Mon-Fri</label>
+                            <div className="hidden_input_wrapper2">
+                                <div style={{display: 'flex'}}>
+                                    <MaskedInput mask="11:11" size="4"
+                                                 value={this.state.open}
+                                                 onChange={(e)=>handleChange(e,'open')}
+                                                 style={{border: 'none !important', marginLeft: '5px'}}/>
+                                    <div className="hidden_input_addition no-margin">
+                                        <select value={this.state.openPeriod}
+                                                className="border-none"
+                                                style={{border: 'none !important'}}
+                                                onChange={(e)=>handleChange(e,'openPeriod')}>
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="hidden_input_addition">
+                                    -
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <MaskedInput mask="11:11" size="4"
+                                                 value={this.state.close}
+                                                 onChange={(e)=>handleChange(e,'close')}
+                                                 style={{border: 'none !important', marginLeft: '5px'}}/>
+                                    <div className="hidden_input_addition no-margin">
+                                        <select value={this.state.closePeriod} className="border-none"
+                                                style={{border: 'none !important'}}
+                                                onChange={(e)=>handleChange(e, 'closePeriod')}>
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="float-right">
+                        <div className="cell">
+                            <div className="field">
+                                <label htmlFor="instagram">Sat-Sun</label>
+                                <div className="hidden_input_wrapper2">
+                                    <div style={{display: 'flex'}}>
+                                        <MaskedInput mask="11:11" size="4"
+                                                     value={this.state.wkOpen}
+                                                     onChange={(e)=>handleChange(e,'wkOpen')}
+                                                     style={{border: 'none !important', marginLeft: '5px'}}/>
+                                        <div className="hidden_input_addition no-margin">
+                                            <select value={this.state.wkOpenPeriod} className="border-none"
+                                                    style={{border: 'none !important'}}
+                                                    onChange={(e)=>handleChange(e,'wkOpenPeriod')}>
+                                                <option value="AM">AM</option>
+                                                <option value="PM">PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="hidden_input_addition">
+                                        -
+                                    </div>
+                                    <div style={{display: 'flex'}}>
+                                        <InputMask style={{width: '49px'}} placeholder="09:00" mask="99:99" maskChar="_" />
                                         <div className="hidden_input_addition no-margin">
                                             <select value={this.state.wkClosePeriod} className="border-none"
                                                     style={{border: 'none !important'}}
