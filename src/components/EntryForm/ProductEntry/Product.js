@@ -90,10 +90,7 @@ class Product extends React.Component {
                         {this.props.product.giftName}
                     </div>
                 </div>
-                <div style={test2}
-                     onClick={() => {this.deleteLocation(this.props.index)}}>
-                    <IoIosTrashOutline />
-                </div>
+                <DeleteButton style={{float: 'right'}} index={this.props.index}></DeleteButton>
             </div>
         )
 

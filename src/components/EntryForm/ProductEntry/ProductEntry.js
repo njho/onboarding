@@ -179,6 +179,8 @@ class ProductEntry extends React.Component {
                                     <input type="number" step="0.01" name="product[Price]" id="Price"
                                            placeholder="5.00"
                                            onChange={(e) => changeHandler(e, 'giftPrice')}
+                                           style={{width: '100%',
+                                           borderRadius: '3px'}}
                                            value={this.props.visibleDemo === -1 || this.props.visibleDemo === 'demo' ? this.props.demoProduct.giftPrice : this.props.demoProduct.giftPrice}
                                     />
                                 </div>
@@ -193,7 +195,7 @@ class ProductEntry extends React.Component {
                                                           {this.setState({emojiView: !this.state.emojiView})}}/>}
                                     </label>
                                     {this.state.emojiView ?
-                                        <Picker color="#63C146" sheetSize="32" exclude={['recent']} title="pick yours"
+                                        <Picker  color="#63C146" sheetSize="32" exclude={['recent']} title="pick yours"
                                                 onClick={this.addEmoji}/> : null}
                                 </div>
                                 <label>

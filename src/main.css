@@ -1292,7 +1292,7 @@ body.is-loading #wrapper > * {
 
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (max-width: 470px) {
 
     #banner {
         width: 100%;

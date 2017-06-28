@@ -147,6 +147,7 @@ class LocationEditor extends React.Component {
                                 <div style={{display: 'flex'}}>
                                     <MaskedInput mask="11:11" size="4"
                                                  value={this.props.locationParams.open}
+                                                 type="number"
                                                  onChange={(e)=>this.handleChange(e,'open')}
                                                  style={{border: 'none !important', marginLeft: '5px'}}/>
                                     <div className="hidden_input_addition no-margin">
@@ -165,6 +166,7 @@ class LocationEditor extends React.Component {
                                 <div style={{display: 'flex'}}>
                                     <MaskedInput mask="11:11" size="4"
                                                  value={this.props.locationParams.close}
+                                                 type="number"
                                                  onChange={(e)=>this.handleChange(e,'close')}
                                                  style={{border: 'none !important', marginLeft: '5px'}}/>
                                     <div className="hidden_input_addition no-margin">
@@ -187,6 +189,7 @@ class LocationEditor extends React.Component {
                                     <div style={{display: 'flex'}}>
                                         <MaskedInput mask="11:11" size="4"
                                                      value={this.props.locationParams.wkOpen}
+                                                     type="number"
                                                      onChange={(e)=>this.handleChange(e,'wkOpen')}
                                                      style={{border: 'none !important', marginLeft: '5px'}}/>
                                         <div className="hidden_input_addition no-margin">
@@ -205,6 +208,7 @@ class LocationEditor extends React.Component {
                                     <div style={{display: 'flex'}}>
                                         <MaskedInput mask="11:11" size="4"
                                                      value={this.props.locationParams.wkClose}
+                                                     type="number"
                                                      onChange={(e)=>this.handleChange(e,'wkClose')}
                                                      style={{border: 'none !important', marginLeft: '5px'}}/>
                                         <div className="hidden_input_addition no-margin">
