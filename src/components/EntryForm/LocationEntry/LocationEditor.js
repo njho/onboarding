@@ -9,6 +9,7 @@ import 'rc-time-picker/assets/index.css';
 import {IoAndroidRemove, IoAndroidAdd} from 'react-icons/lib/io/';
 import update from 'immutability-helper';
 import Label from '../../Label/Label';
+import InputMask from 'react-input-mask';
 
 var MaskedInput = require('react-maskedinput');
 
@@ -107,8 +108,8 @@ class LocationEditor extends React.Component {
         }
 
         const handleSelect = (address, placeId) => {
-        /*    this.setState({...this.state, address, placeId});
-            console.log(placeId);*/
+            /*    this.setState({...this.state, address, placeId});
+             console.log(placeId);*/
             this.handleChange(address, 'address')
             geocodeByPlaceId(placeId)
                 .then(results=>getLatLng(results[0]))
@@ -145,11 +146,12 @@ class LocationEditor extends React.Component {
                             <label htmlFor="instagram">Mon-Fri</label>
                             <div className="hidden_input_wrapper2">
                                 <div style={{display: 'flex'}}>
-                                    <MaskedInput mask="11:11" size="4"
-                                                 value={this.props.locationParams.open}
-                                                 type="number"
-                                                 onChange={(e)=>this.handleChange(e,'open')}
-                                                 style={{border: 'none !important', marginLeft: '5px'}}/>
+                                    <InputMask value={this.props.locationParams.open}
+                                               onChange={(e)=>this.handleChange(e,'open')}
+                                               style={{width: '49px'}}
+                                               placeholder="09:00"
+                                               mask="99:99"
+                                               maskChar="_"/>
                                     <div className="hidden_input_addition no-margin">
                                         <select value={this.props.locationParams.openPeriod}
                                                 className="border-none"
@@ -164,11 +166,12 @@ class LocationEditor extends React.Component {
                                     -
                                 </div>
                                 <div style={{display: 'flex'}}>
-                                    <MaskedInput mask="11:11" size="4"
-                                                 value={this.props.locationParams.close}
-                                                 type="number"
-                                                 onChange={(e)=>this.handleChange(e,'close')}
-                                                 style={{border: 'none !important', marginLeft: '5px'}}/>
+                                    <InputMask value={this.props.locationParams.close}
+                                               onChange={(e)=>this.handleChange(e,'close')}
+                                               style={{width: '49px'}}
+                                               placeholder="09:00"
+                                               mask="99:99"
+                                               maskChar="_"/>
                                     <div className="hidden_input_addition no-margin">
                                         <select value={this.props.locationParams.closePeriod} className="border-none"
                                                 style={{border: 'none !important'}}
@@ -187,11 +190,12 @@ class LocationEditor extends React.Component {
                                 <label htmlFor="instagram">Sat-Sun</label>
                                 <div className="hidden_input_wrapper2">
                                     <div style={{display: 'flex'}}>
-                                        <MaskedInput mask="11:11" size="4"
-                                                     value={this.props.locationParams.wkOpen}
-                                                     type="number"
-                                                     onChange={(e)=>this.handleChange(e,'wkOpen')}
-                                                     style={{border: 'none !important', marginLeft: '5px'}}/>
+                                        <InputMask value={this.props.locationParams.wkOpen}
+                                                   onChange={(e)=>this.handleChange(e,'wkOpen')}
+                                                   style={{width: '49px'}}
+                                                   placeholder="09:00"
+                                                   mask="99:99"
+                                                   maskChar="_"/>
                                         <div className="hidden_input_addition no-margin">
                                             <select value={this.props.locationParams.wkOpenPeriod}
                                                     className="border-none"
@@ -206,11 +210,12 @@ class LocationEditor extends React.Component {
                                         -
                                     </div>
                                     <div style={{display: 'flex'}}>
-                                        <MaskedInput mask="11:11" size="4"
-                                                     value={this.props.locationParams.wkClose}
-                                                     type="number"
-                                                     onChange={(e)=>this.handleChange(e,'wkClose')}
-                                                     style={{border: 'none !important', marginLeft: '5px'}}/>
+                                        <InputMask value={this.props.locationParams.wkClose}
+                                                   value={this.props.locationParams.wkClose}
+                                                   style={{width: '49px'}}
+                                                   placeholder="09:00"
+                                                   mask="99:99"
+                                                   maskChar="_"/>
                                         <div className="hidden_input_addition no-margin">
                                             <select value={this.props.locationParams.wkClosePeriod}
                                                     className="border-none"

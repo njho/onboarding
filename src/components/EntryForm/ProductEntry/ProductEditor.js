@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 import DeleteButton from '../delete';
 import update from 'immutability-helper';
 import Label from '../../Label/Label'
+import EmojiList from './EmojiList';
 
 
 const mapStateToProps = (state) => {
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => {
 const demoProduct = {
     giftName: "",
     giftPhrase: "",
-    giftPrice: ""
+    giftPrice: "",
+    emojis: []
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -51,7 +53,8 @@ const mapDispatchToProps = dispatch => ({
             demoProduct: {
                 giftName: "",
                 giftPhrase: "",
-                giftPrice: ""
+                giftPrice: "",
+                emojis: []
             }
         })
 
@@ -74,6 +77,18 @@ class ProductEditor extends React.Component {
             emojiView: false,
             formVisible: true
         };
+        this.addEmoji = (emoji,event)=> {
+            event.preventDefault();
+            if(this.props.demoProduct.emojis.length > 4) {
+                var demoProduct = update(this.props.demoProduct, {emojis: {$push: [emoji.colons]}});
+                demoProduct.emojis.shift();
+                this.props.changeHandler(demoProduct);
+
+            } else {
+                var demoProduct = update(this.props.demoProduct, {emojis: {$push: [emoji.colons]}});
+                this.props.changeHandler(demoProduct);
+            }
+        }
     }
 
     componentDidMount() {
@@ -193,6 +208,7 @@ class ProductEditor extends React.Component {
                                         <Picker color="#63C146" sheetSize="32" exclude={['recent']} title="pick yours"
                                                 onClick={this.addEmoji}/> : null}
                                 </div>
+                                <EmojiList></EmojiList>
 <div onClick={() => updateProduct()}>
     {this.state.visible ? null :     <span style={test} >
 <IoAndroidAdd /> Save

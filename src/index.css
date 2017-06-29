@@ -541,3 +541,9 @@ form.signup_form {
   cursor: pointer;
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 30%, white 100%);
   position: absolute; }
+
+.emoji-style {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px 0px 10px 0px; }

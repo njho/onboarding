@@ -1024,13 +1024,7 @@ body.is-ie #page-wrapper {
 
 }
 
-@media screen and (max-width: 480px) {
 
-    #wrapper {
-        padding: 3em 2em 1em 2em ;
-    }
-
-}
 
 @media screen and (max-width: 360px) {
 
@@ -1328,7 +1322,9 @@ body.is-loading #banner .inner ul:after {
     }
 
     #wrapper {
-        width: 100%
+        width: 100%;
+        text-align: center;
+        align-items: center;
     }
 
 

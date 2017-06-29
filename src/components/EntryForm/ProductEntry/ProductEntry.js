@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 import DeleteButton from '../delete';
 import update from 'immutability-helper';
 import Label from '../../Label/Label.js';
+import EmojiList from './EmojiList';
 
 
 const mapStateToProps = (state) => {
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => {
 const demoProduct = {
     giftName: "",
     giftPhrase: "",
-    giftPrice: ""
+    giftPrice: "",
+    emojis: []
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -61,6 +63,19 @@ class ProductEntry extends React.Component {
             formVisible: true,
             details: false
         };
+
+        this.addEmoji = (emoji,event)=> {
+            event.preventDefault();
+            if(this.props.demoProduct.emojis.length > 4) {
+                var demoProduct = update(this.props.demoProduct, {emojis: {$push: [emoji.colons]}});
+                demoProduct.emojis.shift();
+                this.props.changeHandler(demoProduct);
+
+            } else {
+                var demoProduct = update(this.props.demoProduct, {emojis: {$push: [emoji.colons]}});
+                this.props.changeHandler(demoProduct);
+            }
+        }
     }
 
     componentDidMount() {
@@ -158,6 +173,7 @@ class ProductEntry extends React.Component {
                                 <label htmlFor="product">Gift </label>
                                 <input type="text" name="product[Gift]" id="Gift"
                                        placeholder='Meet Superman!'
+                                       autocomplete="off"
                                        value={this.props.visibleDemo === -1 || this.props.visibleDemo === 'demo' ? this.props.demoProduct.giftName : this.props.products[this.props.visibleDemo].giftName}
                                        onChange={(e) => changeHandler(e, 'giftName')}/>
                                 <label htmlFor="product">What's the best way to describe this?</label>
@@ -179,6 +195,7 @@ class ProductEntry extends React.Component {
                                     <input type="number" step="0.01" name="product[Price]" id="Price"
                                            placeholder="5.00"
                                            onChange={(e) => changeHandler(e, 'giftPrice')}
+                                           autocomplete="off"
                                            style={{width: '100%',
                                            borderRadius: '3px'}}
                                            value={this.props.visibleDemo === -1 || this.props.visibleDemo === 'demo' ? this.props.demoProduct.giftPrice : this.props.demoProduct.giftPrice}
@@ -197,6 +214,7 @@ class ProductEntry extends React.Component {
                                     {this.state.emojiView ?
                                         <Picker  color="#63C146" sheetSize="32" exclude={['recent']} title="pick yours"
                                                 onClick={this.addEmoji}/> : null}
+                                    <EmojiList></EmojiList>
                                 </div>
                                 <label>
 <span style={test} onClick={() => addProduct()}>

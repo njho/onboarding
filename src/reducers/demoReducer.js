@@ -3,7 +3,8 @@ const defaultState = {
     demoProduct: {
         giftName: "",
         giftPhrase: "",
-        giftPrice: ""
+        giftPrice: "",
+        emojis: []
     },
     editor: false,
     locationEditor: false
@@ -37,7 +38,8 @@ export default(state = defaultState, action) => {
                 demoProduct: {
                     giftName: "",
                     giftPhrase: "",
-                    giftPrice: ""
+                    giftPrice: "",
+                    emojis: []
                 },
                 editor: false
             }
@@ -88,9 +90,14 @@ export default(state = defaultState, action) => {
                 locationEditor: true,
                 locationIndex: action.locationIndex,
                 locationParams: action.locationParams
-
             }
         }
+        case 'DELETE_THE_EMOJI_ALREADY':
+            console.log('UPDATE_LOCATION');
+            return {
+                ...state,
+                demoProduct: action.demoProduct
+            }
 
         default:
             return state;
